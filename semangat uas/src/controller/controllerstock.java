@@ -23,10 +23,10 @@ public class controllerstock{
      
      public void update(){
         ms = new modelstock();
-        ms.setidt(Integer.parseInt(vs.getId().getText()));
-        ms.settype(vs.getType().getText());
+        ms.setId(Integer.parseInt(vs.getId().getText()));
+        ms.setType(vs.getType().getText());
         ms.setStock(vs.getStock().getText());
-        ms.setharga(vs.getHarga().getText());
+        ms.setHarga(vs.getHarga().getText());
 
         ms.update();
 

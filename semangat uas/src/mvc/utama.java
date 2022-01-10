@@ -8,6 +8,7 @@ package mvc;
 
 import view.viewbarang;
 import view.viewstock;
+import view.viewtransaksi;
 
 /**
  *
@@ -38,10 +39,12 @@ public class utama extends javax.swing.JFrame {
         logout = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         barangmasuk = new javax.swing.JMenuItem();
-        updatedataB = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         penjualan = new javax.swing.JMenu();
+        Penjualan = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,9 +79,6 @@ public class utama extends javax.swing.JFrame {
         });
         jMenu2.add(barangmasuk);
 
-        updatedataB.setText("Laporan barang masuk");
-        jMenu2.add(updatedataB);
-
         jMenuItem1.setText("Update stock");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,9 +90,30 @@ public class utama extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         penjualan.setText("Penjualan");
+
+        Penjualan.setText("penjualan");
+        Penjualan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PenjualanActionPerformed(evt);
+            }
+        });
+        penjualan.add(Penjualan);
+
         jMenuBar1.add(penjualan);
 
-        jMenu3.setText("Laporan Penjualan");
+        jMenu3.setText("Laporan ");
+
+        jMenuItem2.setText("Laporan Pembelian");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuItem3.setText("Laporan Penjualan");
+        jMenu3.add(jMenuItem3);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -131,6 +152,17 @@ public class utama extends javax.swing.JFrame {
         vs.show();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void PenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PenjualanActionPerformed
+        // TODO add your handling code here:
+        viewtransaksi vt = new viewtransaksi();
+        this.layar.add(vt);
+        vt.show();
+    }//GEN-LAST:event_PenjualanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -167,6 +199,7 @@ public class utama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Penjualan;
     private javax.swing.JMenuItem barangmasuk;
     private javax.swing.JMenuItem datauser;
     private javax.swing.JMenu jMenu1;
@@ -174,9 +207,10 @@ public class utama extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JDesktopPane layar;
     private javax.swing.JMenuItem logout;
     private javax.swing.JMenu penjualan;
-    private javax.swing.JMenuItem updatedataB;
     // End of variables declaration//GEN-END:variables
 }

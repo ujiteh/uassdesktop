@@ -19,16 +19,16 @@ public class modelstock {
     private String stock;
     private String harga ;
     private int id;
-   
-     public String getharga() {
-        return harga;
+
+    public String getType() {
+        return type;
     }
 
-    public void setharga(String harga) {
-        this.harga = harga;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getstock() {
+    public String getStock() {
         return stock;
     }
 
@@ -36,32 +36,37 @@ public class modelstock {
         this.stock = stock;
     }
 
-    public String gettype() {
-        return type;
+    public String getHarga() {
+        return harga;
     }
 
-    public void settype(String type) {
-        this.type = type;
+    public void setHarga(String harga) {
+        this.harga = harga;
     }
-     public int getid() {
+
+    public int getId() {
         return id;
     }
 
-    public void setidt(int id) {
+    public void setId(int id) {
         this.id = id;
     }
+   
+     
     public void update(){
               
-         String sql = "UPDATE stock SET type = '" +  gettype()+"'"
-                 +", stock ='" + getstock()+"'"
-                 +", harga = ' "+ getharga()+"'"+"' WHERE ids = '"+getid()+"'";
+         String sql = "UPDATE stock SET "
+                 + "type = '" +  getType()+"'"
+                 +", stockgas ='" + getStock()+"'"
+                 +", harga = ' "+ getHarga()+"'"+" WHERE  ids = "+getId()+"";
+         //UPDATE `stock` SET `stockgas` = 'ds55' WHERE `stock`.`ids` = 94;
         try {
            PreparedStatement eksekusi = KoneksiDatabase.getKoneksi().prepareStatement(sql);
            eksekusi.execute();
            
            JOptionPane.showMessageDialog(null, "Data Berhasil disimpan");
        } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Data gagal disimpan"+ex);
+           JOptionPane.showMessageDialog(null, "Data gagal disimpan"+ex+sql);
        }
         
         

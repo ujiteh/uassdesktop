@@ -5,7 +5,6 @@
  */
 package view;
 
-import controller.controllerbarang;
 import controller.controllerstock;
 import database.KoneksiDatabase;
 import java.sql.ResultSet;
@@ -35,7 +34,7 @@ public class viewstock extends javax.swing.JInternalFrame {
         tabel.setModel(model);
         model.addColumn("ids");
         model.addColumn("type");
-        model.addColumn("stock");
+        model.addColumn("stock gas");
         model.addColumn("harga");      
         tampildata();
     }
@@ -55,6 +54,8 @@ public class viewstock extends javax.swing.JInternalFrame {
     public void setId(JTextField id) {
         this.id = id;
     }
+
+    
 
     public JTextField getStock() {
         return stock;
@@ -83,10 +84,10 @@ public class viewstock extends javax.swing.JInternalFrame {
             ResultSet res = stat.executeQuery(sql);
             while(res.next()){
                 Object[] hasil;
-                hasil = new Object[6];
+                hasil = new Object[4];
                 hasil[0] = res.getString("ids");
                 hasil[1] = res.getString("type");
-                hasil[2] = res.getString("stock");
+                hasil[2] = res.getString("stockgas");
                 hasil[3] = res.getString("harga");
 
                 model.addRow(hasil);
