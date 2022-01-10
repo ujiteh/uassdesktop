@@ -22,8 +22,8 @@ public class controllerbarang {
     
     public void simpan(){
         mb = new modelbarang();
-        mb.settype((String) vb.getType().getSelectedItem());
-        mb.setjumlah(vb.getJumlah().getText());
+        mb.setgas(vb.getGas().getText());
+        mb.setjumlah(Integer.parseInt( vb.getJumlah().getText()));
         mb.sethargasatuan(vb.getHargasatuan().getText());
         mb.sethargatotal(vb.getHargatotal().getText());
         

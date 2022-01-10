@@ -15,27 +15,35 @@ import javax.swing.JOptionPane;
  * @author Tawang sahro winanto
  */
 public class modelbarang {
-    private String mtype;
-    private String mjumlah ;
+    private String mgas;
+    private int mjumlah ;
+    private int mstock;
     private String mhargasatuan ;
     private String mhargatotal ;
     
-     public String gettype() {
-        return mtype;
+     public String getgas() {
+        return mgas;
     }
 
-    public void settype(String mtype) {
-        this.mtype = mtype;
+    public void setgas(String mgas) {
+        this.mgas = mgas;
     }
     
-     public String getjumlah() {
+     public int getjumlah() {
         return mjumlah;
     }
 
-    public void setjumlah(String jumlah) {
+    public void setjumlah(int jumlah) {
         this.mjumlah = jumlah;
     }
     
+     public int getstock() {
+        return mjumlah;
+    }
+
+    public void setstock(int stock) {
+        this.mstock = stock;
+    }
      public String gethargasatuan() {
         return mhargasatuan;
     }
@@ -52,13 +60,18 @@ public class modelbarang {
         this.mhargatotal = hargatotal;
     }
     public void SimpanDataBarang (){
-
+        int stock = getstock();
+        int stok = stock +getjumlah();
         String sql = ("INSERT INTO barang (type, stock, hargasatuan, hargatotal)" 
-                + "VALUES ('"+gettype()+"' , '"+getjumlah()+"' , '"+gethargasatuan()+"' , '"+gethargatotal()+"' ) " );
+                + "VALUES ('"+getgas()+"' , '"+getjumlah()+"' , '"+gethargasatuan()+"' , '"+gethargatotal()+"' ) " );
+        String sql2 = "UPDATE stock SET stock = '"+stok+"' WHERE type = '"+getgas()+"' "; 
  
         try {
             PreparedStatement eksekusi = KoneksiDatabase.getKoneksi().prepareStatement(sql);
             eksekusi.execute();
+            
+            PreparedStatement eksekusi2 = KoneksiDatabase.getKoneksi().prepareStatement(sql2);
+            eksekusi2.execute();
             
             JOptionPane.showMessageDialog(null, "Data berhasil disimpan ke dalam Database");
             

@@ -7,6 +7,7 @@ package mvc;
 
 
 import view.viewbarang;
+import view.viewstock;
 
 /**
  *
@@ -38,6 +39,7 @@ public class utama extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         barangmasuk = new javax.swing.JMenuItem();
         updatedataB = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         penjualan = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
@@ -77,6 +79,14 @@ public class utama extends javax.swing.JFrame {
         updatedataB.setText("Laporan barang masuk");
         jMenu2.add(updatedataB);
 
+        jMenuItem1.setText("Update stock");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
         jMenuBar1.add(jMenu2);
 
         penjualan.setText("Penjualan");
@@ -113,6 +123,13 @@ public class utama extends javax.swing.JFrame {
         this.layar.add(vb);
         vb.show();
     }//GEN-LAST:event_barangmasukActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        viewstock vs = new viewstock();
+        this.layar.add(vs);
+        vs.show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +173,7 @@ public class utama extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JDesktopPane layar;
     private javax.swing.JMenuItem logout;
     private javax.swing.JMenu penjualan;
