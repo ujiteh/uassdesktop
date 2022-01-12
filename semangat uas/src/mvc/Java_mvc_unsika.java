@@ -5,6 +5,9 @@
  */
 package mvc;
 
+import controller.controllerLogin;
+import view.viewLogin;
+
 
 
 /**
@@ -12,7 +15,7 @@ package mvc;
  * @author Acer
  */
 public class Java_mvc_unsika {
-
+static controllerLogin cl;
 
     /**
      * @param args the command line arguments
@@ -21,8 +24,11 @@ public class Java_mvc_unsika {
         // TODO code application logic here
         //viewPelanggan vP = new viewPelanggan();
         //vP.setVisible(true);
-      utama utama1 = new utama();
-      utama1.setVisible(true);
+      //utama utama1 = new utama();
+      //utama1.setVisible(true);
+      viewLogin vl = new viewLogin();
+        cl=controllerLogin.getInstance(vl);
+        cl.getvL().setVisible(true);
 
     }
     

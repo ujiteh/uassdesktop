@@ -61,6 +61,7 @@ public class viewListbarang extends javax.swing.JFrame {
         }  
     }
     
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,7 +97,7 @@ public class viewListbarang extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listdataTB);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Data Pelanggan");
+        jLabel1.setText("Data Barang");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,6 +131,7 @@ public class viewListbarang extends javax.swing.JFrame {
         int ambilbarang = listdataTB.getSelectedRow();
 
         vti.getType().setText(listdataTB.getValueAt(ambilbarang, 1).toString());
+        vti.getStock().setText(listdataTB.getValueAt(ambilbarang, 2).toString());
         vti.getHargasatuan().setText(listdataTB.getValueAt(ambilbarang, 3).toString());
         
         //Interface tabel akan otomatis ke close

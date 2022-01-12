@@ -24,8 +24,8 @@ public class KoneksiDatabase {
         if(conn == null){
 
             try {   
-                propert.load(new FileInputStream("C:\\Users\\Tawang sahro winanto\\Documents\\NetBeansProjects"
-                        + "\\semangat uas\\src\\database\\konfigurasiDatabase.properties"));
+                propert.load(new FileInputStream("C:\\Users\\Tawang sahro winanto\\Documents"
+                        + "\\NetBeansProjects\\semangat uas\\src\\database\\konfigurasiDatabase.properties"));
                 
 
             } catch (IOException ex) {

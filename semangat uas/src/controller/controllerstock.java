@@ -5,7 +5,9 @@
  */
 package controller;
 
+import model.modelpembelian;
 import model.modelstock;
+import model.modeluser;
 import view.viewstock;
 
 /**
@@ -17,19 +19,42 @@ public class controllerstock{
     private viewstock vs;
     public controllerstock(viewstock vs) {
         
-        this.vs = vs;     }
+        this.vs = vs;     
+    }
     
-    
+     public void clear(){
+        vs.getId().setText("");
+        vs.getType().setText("");
+        vs.getStock().setText("");
+        vs.getHarga().setText("");
+    }
+     public void simpan(){
+        ms = new modelstock();
+        ms.setType(vs.getType().getText());
+        ms.setStock(Integer.parseInt(vs.getStock().getText()));
+        ms.setHarga(Integer.parseInt(vs.getHarga().getText()));
+        ms.SimpanData();
+        clear();
+      
+    }
+     
+    public void Delete(){
+        ms = new modelstock();
+        ms.setId(Integer.parseInt(vs.getId().getText()));
+        ms.HapusData();
+        clear();
+        
+
+    }
      
      public void update(){
         ms = new modelstock();
         ms.setId(Integer.parseInt(vs.getId().getText()));
         ms.setType(vs.getType().getText());
-        ms.setStock(vs.getStock().getText());
-        ms.setHarga(vs.getHarga().getText());
-
+        ms.setStock(Integer.parseInt(vs.getStock().getText()));
+        ms.setHarga(Integer.parseInt(vs.getHarga().getText()));
         ms.update();
-
+        clear();
     }
 }
     

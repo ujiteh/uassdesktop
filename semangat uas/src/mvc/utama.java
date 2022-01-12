@@ -6,9 +6,16 @@
 package mvc;
 
 
-import view.viewbarang;
+import controller.controllerLogin;
+import javax.swing.JFrame;
+import view.viewLaporanpembelian;
+import view.viewLaporanpenjualan;
+
+import view.viewLogin;
+import view.viewpembelian;
 import view.viewstock;
 import view.viewtransaksi;
+import view.viewuser;
 
 /**
  *
@@ -21,6 +28,12 @@ public class utama extends javax.swing.JFrame {
      */
     public utama() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        controllerLogin cl = controllerLogin.getInstance(new viewLogin());
+        if(!cl.getmL().getHakakses().toLowerCase().contains("pemilik")){
+            jMenu2.setVisible(false);
+            jMenu3.setVisible(false);
+        }
     }
 
     /**
@@ -33,6 +46,7 @@ public class utama extends javax.swing.JFrame {
     private void initComponents() {
 
         layar = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         datauser = new javax.swing.JMenuItem();
@@ -52,19 +66,32 @@ public class utama extends javax.swing.JFrame {
         layar.setLayout(layarLayout);
         layarLayout.setHorizontalGroup(
             layarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+            .addGap(0, 429, Short.MAX_VALUE)
         );
         layarLayout.setVerticalGroup(
             layarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 239, Short.MAX_VALUE)
         );
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("SELAMAT DATANG DI Toko Karya logam");
+
         jMenu1.setText("File");
 
         datauser.setText("Data user");
+        datauser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datauserActionPerformed(evt);
+            }
+        });
         jMenu1.add(datauser);
 
         logout.setText("logout");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
         jMenu1.add(logout);
 
         jMenuBar1.add(jMenu1);
@@ -112,6 +139,11 @@ public class utama extends javax.swing.JFrame {
         jMenu3.add(jMenuItem2);
 
         jMenuItem3.setText("Laporan Penjualan");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
@@ -124,13 +156,19 @@ public class utama extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(layar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(layar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(4, 4, 4)
                 .addComponent(layar)
                 .addContainerGap())
         );
@@ -140,7 +178,7 @@ public class utama extends javax.swing.JFrame {
 
     private void barangmasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barangmasukActionPerformed
         // TODO add your handling code here:
-        viewbarang vb = new viewbarang();
+        viewpembelian vb = new viewpembelian();
         this.layar.add(vb);
         vb.show();
     }//GEN-LAST:event_barangmasukActionPerformed
@@ -154,6 +192,9 @@ public class utama extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
+        viewLaporanpembelian vp = new viewLaporanpembelian();
+        this.layar.add(vp);
+        vp.show();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void PenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PenjualanActionPerformed
@@ -162,6 +203,25 @@ public class utama extends javax.swing.JFrame {
         this.layar.add(vt);
         vt.show();
     }//GEN-LAST:event_PenjualanActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        viewLaporanpenjualan vj = new viewLaporanpenjualan();
+        this.layar.add(vj);
+        vj.show();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void datauserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datauserActionPerformed
+        // TODO add your handling code here:
+        viewuser us = new viewuser();
+        this.layar.add(us);
+        us.show();
+    }//GEN-LAST:event_datauserActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +262,7 @@ public class utama extends javax.swing.JFrame {
     private javax.swing.JMenuItem Penjualan;
     private javax.swing.JMenuItem barangmasuk;
     private javax.swing.JMenuItem datauser;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

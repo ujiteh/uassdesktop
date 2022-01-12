@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class modelstock {
     private String type;
-    private String stock;
-    private String harga ;
+    private int stock;
+    private int harga ;
     private int id;
 
     public String getType() {
@@ -28,22 +28,23 @@ public class modelstock {
         this.type = type;
     }
 
-    public String getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(String stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
-    public String getHarga() {
+    public int getHarga() {
         return harga;
     }
 
-    public void setHarga(String harga) {
+    public void setHarga(int harga) {
         this.harga = harga;
     }
 
+   
     public int getId() {
         return id;
     }
@@ -52,7 +53,22 @@ public class modelstock {
         this.id = id;
     }
    
-     
+    public void SimpanData (){
+
+        String sql = ("INSERT INTO stock (type, stockgas, harga)" 
+                + "VALUES ('"+getType()+"' , '"+getStock()+"' , '"+getHarga()+"' ) " );
+ 
+        try {
+            PreparedStatement eksekusi = KoneksiDatabase.getKoneksi().prepareStatement(sql);
+            eksekusi.execute();
+            
+            JOptionPane.showMessageDialog(null, "Data berhasil disimpan ke dalam Database");
+            
+        } catch (SQLException ex) {
+            //Logger.getLogger(ModelPelanggan.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Data gagal disimpan ke dalam Database \n" + ex);
+        }
+    }
     public void update(){
               
          String sql = "UPDATE stock SET "
@@ -64,11 +80,23 @@ public class modelstock {
            PreparedStatement eksekusi = KoneksiDatabase.getKoneksi().prepareStatement(sql);
            eksekusi.execute();
            
-           JOptionPane.showMessageDialog(null, "Data Berhasil disimpan");
+           JOptionPane.showMessageDialog(null, "Data Berhasil diupdate");
        } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Data gagal disimpan"+ex+sql);
+           JOptionPane.showMessageDialog(null, "Data gagal diupdate"+ex+sql);
        }
         
         
+    }
+     public void HapusData (){
+        String sql = "DELETE FROM stock WHERE ids = "+getId()+" ";
+        
+        try {
+            PreparedStatement eksekusi = KoneksiDatabase.getKoneksi().prepareStatement(sql);
+            eksekusi.execute();
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus dari Database");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Data gagal dihapus dari Database \n" + ex);
+        }
     }
 }
